@@ -1,0 +1,11 @@
+FROM node:alpine
+
+WORKDIR '/app'
+
+COPY package.json .
+RUN npm install --unsafe-perm=true --allow-root
+RUN mkdir /app/node_modules/.cache
+
+COPY . .
+
+CMD ["npm", "run", "start"]
